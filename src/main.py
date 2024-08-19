@@ -18,7 +18,7 @@ def simular_carro(carro: Carro):
                 t = float(input("Informe o tempo: "))
                 carro.acelerar(v, t)
 
-            print('Infos atuais do carro:')
+            print('Infos atuais do carro')
             print(carro)
             print("\n")
 
