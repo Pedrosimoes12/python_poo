@@ -44,7 +44,8 @@ if __name__ == "__main__":
     '''
     Controlando o carro até ele atingir 300 Km ou até acabar a gasolina dos 2
     '''
-    while carro1.odometro < 300 and carro2.odometro < 300 and (carro1.tanque > 0 or carro2.tanque > 0):
+    while carro1.get_odometro() < 300 and carro2.get_odometro() < 300 and \
+            (carro1.get_tanque() > 0 or  carro2.get_tanque() > 0):
         try:
             op_carro = 0
             while op_carro not in (1,2):
@@ -57,12 +58,17 @@ if __name__ == "__main__":
         except Exception as e:
             print("Erro!")
             print(e)
-    if carro1.motor_on is True:
-        carro1.desligar()
-    if carro2.motor_on is True:
-        carro2.desligar()
-    print(carro1)
-    print(carro2)
 
-    if carro1.tanque == 0 and carro2.tanque == 0:
+    try:
+        carro1.desligar()
+        carro2.desligar()
+    except Exception as e :
+        print(e)
+
+    if carro1.get_odometro() > carro2.get_odometro():
+        print(carro1)
+    else:
+        print(carro2)
+
+    if carro1.get_tanque() == 0 and carro2.get_tanque() == 0:
         print('Acabou a gasolina dos carros')
