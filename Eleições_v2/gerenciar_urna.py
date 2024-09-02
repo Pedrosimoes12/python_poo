@@ -28,3 +28,4 @@ def votar(urna : Urna):
     voto = int(input("Digite o numero do candidato ou 0 para branco: "))
     urna.registrar_voto(eleitor, voto)
 
+#recomit

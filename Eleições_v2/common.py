@@ -58,3 +58,5 @@ class Candidato(Pessoa):
 
     def get_numero(self):
         return self.__numero
+
+    #recomit
