@@ -1,5 +1,5 @@
 from common import *
-from eleicao import Urna
+from eleicao import *
 
 def iniciar_urna(eleitores, candidatos):
     print("Iniciando Urna")
@@ -19,11 +19,12 @@ def votar(urna : Urna):
     titulo_eleitor = int(input("Digite o titulo do eleitor: "))
     eleitor = urna.get_eleitor(titulo_eleitor)
 
-    if not eleitor:
+    if eleitor == False:
         raise Exception("Eleitor não é desta Urna")
 
     print(eleitor)
     print("Pode votar!")
     print("===========")
-    voto = int(input("Digite o numero do candidato: "))
+    voto = int(input("Digite o numero do candidato ou 0 para branco: "))
     urna.registrar_voto(eleitor, voto)
+

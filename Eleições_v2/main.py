@@ -13,10 +13,11 @@ def menu():
     print("4-Listar Candidatos")
     print("5-Iniciar Urna")
     print("6-Testar Urna")
-    print("7-Sair")
-    op = int(input("Digite a opcao [1 a 7]? "))
-    while op not in range(1, 8):
-        op = int(input("Digite a opcao [1 a 7]? "))
+    print("7-Fechar Urna")
+    print("8-Sair")
+    op = int(input("Digite a opcao [1 a 8]? "))
+    while op not in range(1, 9):
+        op = int(input("Digite a opcao [1 a 8]? "))
     return op
 
 def inserir_eleitor(eleitores):
@@ -28,8 +29,8 @@ def inserir_eleitor(eleitores):
     nome = input("Digite o nome: ")
     RG = input("Digite o RG: ")
     CPF = input("Digite o CPF: ")
-    secao = input("Digite a secao: ")
-    zona = input("Digite a zona: ")
+    secao = int(input("Digite a secao: "))
+    zona = int(input("Digite a zona: "))
 
     eleitor = Eleitor(nome, RG, CPF, titulo, secao, zona)
     eleitores[eleitor.get_titulo()] = eleitor
@@ -46,8 +47,8 @@ def atualizar_eleitor(eleitores):
     if titulo in eleitores:
         eleitor = eleitores[titulo]
         print(eleitor)
-        secao = input("Digite a nova secao: ")
-        zona = input("Digite a nova zona: ")
+        secao = int(input("Digite a nova secao: "))
+        zona = int(input("Digite a nova zona: "))
         eleitor.secao = secao
         eleitor.zona = zona
 
@@ -104,7 +105,7 @@ if __name__ == "__main__":
         print("Arquivo nao encontrado, nenhum candidato carregado!")
 
     opcao = 1
-    while opcao in range(1,8):
+    while opcao in range(1,9):
         try:
             opcao = menu()
 
@@ -117,12 +118,19 @@ if __name__ == "__main__":
             elif opcao == 4:
                 listar_candidatos(candidatos)
             elif opcao == 5:
-                urna = gerenciar_urna.iniciar_urna(candidatos, eleitores)
+                urna = gerenciar_urna.iniciar_urna(eleitores.values(), candidatos.values())
+                print("Zerésima")
+                print("=-=-=-=-=-=-=-=-=")
+                print(urna)
+                urna.zeresima()
             elif opcao == 6:
                 gerenciar_urna.votar(urna)
             elif opcao == 7:
+                urna.encerrar()
+                print(urna)
+            elif opcao == 8:
                 print("Saindo!")
                 break
         except Exception as e:
-            #traceback.print_exc()
+            traceback.print_exc()
             print(e)
