@@ -42,7 +42,7 @@ class Eleitor(Pessoa):
         info = super().__str__()
         info += (f'Titulo: {self.__titulo}\n'
                  f'Seção: {self.secao}\n'
-                 f'Zona: {self.zona}\n')
+                 f'Zona: {self.zona}\n\n')
         return info
 
     def __repr__(self):
