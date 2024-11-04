@@ -21,8 +21,14 @@ class Jogador():
     def municiar(self, d : Disparavel):
         d.recarregar()
 
+    def bater(self, j, golpe : Golpe = None, arma : Arma = None):
+        if golpe != None and arma == None:
+            golpe.golpear(j)
+        elif golpe == None and arma != None:
+            arma.agredir(j)
+
     def __str__(self):
         info = f'Nome: {self.nome}, Energia: {self.energia}'
         return info
 
-
+#recommit

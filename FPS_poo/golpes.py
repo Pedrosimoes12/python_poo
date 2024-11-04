@@ -15,3 +15,6 @@ class Chute(Golpe):
 
     def golpear(self, j):
         j.energia -= 2
+
+
+#recommit

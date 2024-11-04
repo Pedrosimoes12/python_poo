@@ -19,8 +19,10 @@ j2.add_armas(r1)
 print(j1)
 print(j2)
 
-j1.atirar(j1.armas[1], j2)
-j2.atirar(j1.armas[0], j1)
+j1.bater(j2, Soco())
+j2.bater(j1, arma=j2.armas[0])
 
 print(j1)
 print(j2)
+
+#recommit
